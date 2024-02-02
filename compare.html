@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Comparison Application</title>
+    <style>
+
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family:'Poppins', sans-serif;
+            }
+            body{
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url('https://coolbackgrounds.io/images/backgrounds/white/white-trianglify-b79c7e1f.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px 100px;
+                background-attachment: fixed;
+                background: transparent; /* Set your initial background color here */
+                transition: background-color 0.5s ease;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 99;
+            }
+            .logo{
+                font-size: 2em;
+                color: #160808;
+                user-select: none;
+            }
+            .navigation a {
+                position: relative;
+                font-size: 1.1em;
+                color: #1c0d0d;
+                text-decoration: none;
+                font-weight:500;
+                margin-left: 40px;
+            }
+           .navigation .btnlogin_popup{
+                width: 130px;
+                height: 50px;
+                background: transparent;
+                border: 2px solid #fff;
+                outline: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1.1em;
+                color: #fff;
+                font-weight: 500;
+                margin-left: 40px;
+                transition: .5s;
+            }
+            .navigation .btnlogin_popup:hover{
+                background: #fff;
+                color: #162938;
+            }
+     
+
+       
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 90px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 60px;
+            max-width: 250px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            background-color: #162938;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0c53d863;
+        }
+
+        #comparison {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        #comparison-table th, #comparison-table td {
+            border: 1px solid #ddd;
+            padding: 16px;
+            text-align: center;
+        }
+
+        #comparison-table th {
+            background-color: #f2f2f2;
+            font-size: 18px;
+        }
+
+        #comparison-body td {
+            font-size: 16px;
+        }
+
+        /* Add some animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #comparison-body td {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .logo img {
+      width: 100px; /* Set the desired width for your logo */
+      height: auto; /* Maintain the aspect ratio of the logo */
+       }
+     
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo"><img src="https://th.bing.com/th/id/OIP.jKWMUjPa_WaJtneCEHzR7QHaHa?rs=1&pid=ImgDetMain" alt="Your Logo"></h2>
+         
+        <nav class="navigation">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.htmls">Contact</a>
+        </nav>
+    </header>
+    <div class="product-container">
+            <div class="product" id="laptop">
+                <img src="https://i5.walmartimages.com/asr/9dc2a21d-15b9-455e-a6a1-1ce51c8160ea.01c65474624eed67f2eac46afe9ddff5.jpeg" alt="laptop images" width="150" height="100">
+                <h2>Laptop</h2>
+                <p>starting from  ₹39999</p>
+                <button onclick="comparePrices('Laptop', 'laptop', 'https://www.amazon.com/s?k=lenovo+carbon+x1+gen+9&language=en_US&currency=INR', 'https://www.flipkart.com/laptops-store','https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m570.l1313&_nkw=laptop&_sacat=0','https://www.walmart.com/search?q=laptop&typeahead=laptop')">Compare Prices</button>
+            </div>
+
+            <div class="product" id="smartphone">
+                <img src="https://i5.walmartimages.com/asr/efecddbd-aa8d-45e3-9743-b49b25471f40.bc852a00bbf5df1136e4bbc2fb435cda.jpeg" alt="phone" width="100" height="100">
+                 <h2>Smartphone</h2>
+                 <p>starting from ₹10999</p>
+                <button onclick="comparePrices('Smartphone', 'smartphone', 'https://www.amazon.com/s?k=phone&crid=1W79YJ0E9FYO3&sprefix=phone%2Caps%2C271&ref=nb_sb_noss_2', 'https://www.flipkart.com/search?q=phone&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m570.l1313&_nkw=phone&_sacat=0','https://www.walmart.com/search?q=phone')">Compare Prices</button>
+            </div>
+	
+	        <div class="product" id="smartwatch">
+                <img src="https://th.bing.com/th/id/R.ae20930a1209c50267d828295b710570?rik=p%2bby%2bbxQ%2f2EXUg&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f13%2fSmartwatch-PNG-Image.png&ehk=i8LCKtoxoPEqO4YOhrkYbGI7VuLFPHDkkoMRlpf%2fCiQ%3d&risl=&pid=ImgRaw&r=0" alt="watch" width="100" height="100">
+                <h2>Smartwatch</h2>
+                <p>starting from ₹999.00</p>
+                <button onclick="comparePrices('Smartwatch', 'smartwatch', 'https://www.amazon.com/s?k=smart+watch&crid=3HCPH9WMDBF7A&sprefix=samrt%2Caps%2C298&ref=nb_sb_ss_sc_1_5', 'https://www.flipkart.com/all/smart-watches/pr?sid=all%2Cbuh','https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=smartwatch&_sacat=0&_odkw=phone&_osacat=0','https://www.walmart.com/search?q=smartwatch')">Compare Prices</button>
+            </div>
+  
+	        <div class="product" id="earphone">
+                <img src="https://th.bing.com/th/id/OIP.7Rpt53WF85APw_WhnFxVIgHaK5?rs=1&pid=ImgDetMain" alt="earphone" width="100" height="100">
+                <h2>arphones</h2>
+                <p>starting from ₹999.00</p>
+                <button onclick="comparePrices('earphones','earphone', 'https://www.amazon.com/s?k=earphones&crid=H460HQBV9VDT&sprefix=ea%2Caps%2C301&ref=nb_sb_ss_ts-doa-p_6_2', 'https://www.flipkart.com/search?q=earphones&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=earphone&_sacat=0&_odkw=smartwatch&_osacat=0','https://www.walmart.com/search?q=earphone')">Compare Prices</button>
+            </div>
+ 
+	        <div class="product" id="usb">
+                <img src="https://fthmb.tqn.com/_3mSIZchrOUNd7znltt2YRoPXfk=/1500x933/filters:fill(auto,1)/91dewFgRrL._SL1500_-59a44e2f519de200101c827d.jpg" alt="usb" width="100" height="100">
+                 <h2>Usb Cables</h2>
+                 <p>starting from ₹249.00</p>
+                <button onclick="comparePrices('usb', 'usb', 'https://www.amazon.com/s?k=usb+cable&crid=8EKUWVDMRW40&sprefix=usb+cable%2Caps%2C275&ref=nb_sb_ss_ts-doa-p_1_9', 'https://www.flipkart.com/search?q=usb+cable&sid=tyy%2C4mr%2C3nu&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_4_4_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_4_4_na_na_na&as-pos=4&as-type=RECENT&suggestionId=usb+cable%7CMobile+Cables&requestId=a6a7e4ab-922b-4f32-badf-bbe74709186c&as-searchtext=usb%20','https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=usb+cable&_sacat=0&_odkw=earphone&_osacat=0','https://www.walmart.com/cp/personal-care/1005862')">Compare Prices</button>
+            </div>
+            <div class="product" id="personal care">
+                <img src="https://th.bing.com/th/id/OIP.mpnl7NPP0HMVYOewhOzGbgHaFj?rs=1&pid=ImgDetMain" alt="personal-care" width="100" height="100">
+                 <h2>Personal Care</h2>
+                 <p>starting from ₹999.00</p>
+                <button onclick="comparePrices('personal care', 'personal care', 'https://www.amazon.in/s?k=beauty+personal+care&adgrpid=1327112141922877&hvadid=82944779931236&hvbmt=bp&hvdev=c&hvlocphy=150058&hvnetw=o&hvqmt=p&hvtargid=kwd-82945386018249%3Aloc-90&hydadcr=25717_2800047&tag=msndeskstdin-21&ref=pd_sl_3i2d5dndv2_p', 'https://www.flipkart.com/beauty-and-personal-care/makeup/pr?sid=t06%2Cfy9','https://www.ebay.com/str/beautyandpersonalcare','https://www.walmart.com/search?q=usb')">Compare Prices</button>
+            </div>
+            <div class="product" id="medicine">
+                <img src="https://th.bing.com/th/id/OIP.iSWOzwuv3q4-rOuNhNcxagHaEo?rs=1&pid=ImgDetMain" alt="medicine" width="100" height="100">
+                 <h2>Medicine</h2>
+                 <p>starting from ₹599.00</p>
+                <button onclick="comparePrices('medicine', 'medicine', 'https://www.amazon.in/s?k=medicine&crid=196IW1V44EFTF&sprefix=medicine+%2Caps%2C235&ref=nb_sb_noss_2', 'https://www.flipkart.com/health-care/home-medicines/pr?sid=hlc%2Cah4','https://www.ebay.com/b/Over-The-Counter-Medications-Treatments/75036/bn_1850591','https://www.walmart.com/c/kp/medicine')">Compare Prices</button>
+            </div>
+
+        <!-- Add more products as needed -->
+    </div>
+
+    
+
+
+    <div id="comparison">
+        <h2>Price Comparison</h2>
+        <table id="comparison-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Amazon</th>
+                    <th>Flipkart</th>
+                    <th>ebay</th>
+                    <th>walmart</th>
+            
+
+                    <!-- Add more platforms as needed -->
+                </tr>
+            </thead>
+            <tbody id="comparison-body"></tbody>
+        </table>
+        <!-- Add this inside the #comparison div in compare.html -->
+    </div>
+
+    <script>
+        function mockPrice(productIdentifier) {
+            // Generate a random price based on the product identifier
+            switch (productIdentifier) {
+                case 'laptop':
+                    return Math.random() * 30000 + 40000 ;
+                case 'smartphone':
+                    return Math.random() * 20000 + 30000;
+		        case 'smartwatch':
+                    return Math.random() * 1999 + 1500;
+		        case 'earphone':
+                    return Math.random() * 999 + 1000;
+		        case 'usb':
+                    return Math.random() * 240 + 300;
+                case 'personal care':
+                    return Math.random() * 240 + 400;
+                case 'medicine':
+                    return Math.random() * 110 + 200;
+                // Add cases for more products as needed
+                default:
+                    return 0; // Default case
+            }
+        }
+
+        function comparePrices(productName, productIdentifier, amazonLink, flipkartLink,ebayLink,walmartLink) {
+            const comparisonBody = document.getElementById('comparison-body');
+
+            const amazonPrice = mockPrice(productIdentifier);
+            const flipkartPrice = mockPrice(productIdentifier);
+            const ebayPrice = mockPrice(productIdentifier);
+            const walmartPrice= mockPrice(productIdentifier);
+            // Add more platforms and fetch prices here
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${productName}</td>
+                <td><a href="${amazonLink}" target="_blank" rel="noopener noreferrer">₹${amazonPrice.toFixed(2)}</a></td>
+                <td><a href="${flipkartLink}" target="_blank" rel="noopener noreferrer">₹${flipkartPrice.toFixed(2)}</a></td>
+                <td><a href="${ebayLink}" target="_blnak" rel="noreferre">₹${ebayPrice.toFixed(2)}</a></td>
+                <td><a href="${walmartLink}" target="_blnak" rel="noreferre">₹${walmartPrice.toFixed(2)}</a></td>
+                <!-- Add more cells for other platforms as needed -->`;
+
+            comparisonBody.innerHTML = '';
+            comparisonBody.appendChild(row);
+        }
+    </script>
+    </form>
+</body>
+</html>
